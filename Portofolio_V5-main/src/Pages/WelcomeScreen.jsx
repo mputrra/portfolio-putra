@@ -6,7 +6,7 @@ import 'aos/dist/aos.css';
 
 const TypewriterEffect = ({ text }) => {
   const [displayText, setDisplayText] = useState('');
-  
+
   useEffect(() => {
     let index = 0;
     const timer = setInterval(() => {
@@ -16,8 +16,8 @@ const TypewriterEffect = ({ text }) => {
       } else {
         clearInterval(timer);
       }
-    }, 150); // Dipercepat sedikit karena nama Anda lumayan panjang
-    
+    }, 150);
+
     return () => clearInterval(timer);
   }, [text]);
 
@@ -57,7 +57,7 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
         onLoadingComplete?.();
       }, 1000);
     }, 4000);
-    
+
     return () => clearTimeout(timer);
   }, [onLoadingComplete]);
 
@@ -74,7 +74,7 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
       {isLoading && (
         <motion.div className="fixed inset-0 bg-[#030014] z-[100]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit="exit" variants={containerVariants}>
           <BackgroundEffect />
-          
+
           <div className="relative min-h-screen flex items-center justify-center px-4">
             <div className="w-full max-w-4xl mx-auto">
               <motion.div className="flex justify-center gap-3 sm:gap-4 md:gap-8 mb-6 sm:mb-8 md:mb-12" variants={childVariants}>

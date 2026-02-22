@@ -357,7 +357,7 @@ const EducationCard = memo(() => {
               Al Azhar University Indonesia
             </h4>
             <p className="text-slate-400 text-sm">
-              Bachelor of Computer Science (2023 - 2027) | GPA: 3.40/4.00 | 106 SKS Completed
+              Bachelor of Computer Science (2023 - 2027) | IPK: 2.90/4.00 | 99 SKS Completed
             </p>
           </div>
         </div>

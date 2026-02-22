@@ -10,7 +10,7 @@ const PAUSE_DURATION = 2000;
 const WORDS = ["Computer Science Student", "Data Analyst", "Web Developer"];
 const TECH_STACK = ["Python", "PHP", "JavaScript", "Flutter", "MySQL", "Firebase"];
 const SOCIAL_LINKS = [
-  { icon: Linkedin, link: "https://www.linkedin.com/in/abdullah-maulana-putra/" },
+  { icon: Linkedin, link: "#Portofolio" },
   { icon: Mail, link: "mailto:mputrra274@gmail.com" },
 ];
 
@@ -63,13 +63,32 @@ const CTAButton = memo(({ href, text, icon: Icon }) => (
   </a>
 ));
 
-const SocialLink = memo(({ icon: Icon, link }) => (
-  <a href={link} target="_blank" rel="noopener noreferrer">
-    <button className="group relative p-3 rounded-xl bg-white/5 border border-white/10 transition-all duration-300 hover:scale-110 hover:bg-white/10 hover:border-white/20 active:scale-95">
-      <Icon className="w-5 h-5 text-slate-400 transition-colors duration-300 group-hover:text-indigo-400" />
-    </button>
-  </a>
-));
+const SocialLink = memo(({ icon: Icon, link }) => {
+  const isInternal = link.startsWith("#");
+
+  const handleClick = (e) => {
+    if (isInternal) {
+      e.preventDefault();
+      const element = document.querySelector(link);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
+  return (
+    <a
+      href={link}
+      target={isInternal ? "_self" : "_blank"}
+      rel={isInternal ? "" : "noopener noreferrer"}
+      onClick={handleClick}
+    >
+      <button className="group relative p-3 rounded-xl bg-white/5 border border-white/10 transition-all duration-300 hover:scale-110 hover:bg-white/10 hover:border-white/20 active:scale-95">
+        <Icon className="w-5 h-5 text-slate-400 transition-colors duration-300 group-hover:text-indigo-400" />
+      </button>
+    </a>
+  );
+});
 
 const Home = () => {
   const [text, setText] = useState("");
